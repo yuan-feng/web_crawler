@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 def spider_index(url, verbose =1):
 	r = requests.get(url)
+	mainurl="http://stackoverflow.com"
 
 	soup = BeautifulSoup(r.content, 'html.parser')
 
@@ -15,10 +16,12 @@ def spider_index(url, verbose =1):
 	view_data = soup.find_all("div",{"class":"views"})
 
 	# find all the titles and link
+	question_titles=[]
+	question_links=[]
 	for item in main_data:
 		try:
-			question_titles = item.contents[1].text
-			question_links = url+item.contents[1].find_all("a",{"class":"question-hyperlink"})[0].get("href") 
+			question_titles.append(item.contents[1].text)
+			question_links.append(mainurl+item.contents[1].find_all("a",{"class":"question-hyperlink"})[0].get("href") )
 			if verbose:
 				print question_titles
 				print question_links
