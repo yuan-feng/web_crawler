@@ -1,5 +1,0 @@
-all:
-	
-clean:
-	rm *.pyc
-	python deleteKEY.py

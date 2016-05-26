@@ -25,8 +25,7 @@ for key in r.scan_iter():
     print question
     print answers
 
-url="http://stackoverflow.com/questions/"+ str(a)
-[question, answers] = spider_question(url)
+
 
 
 
@@ -44,3 +43,6 @@ url="http://stackoverflow.com/questions/"+ str(a)
 
 	# mainurl="http://stackoverflow.com"
 	# Npage=numpy.arange(29981)
+	
+	# url="http://stackoverflow.com/questions/"+ str(a)
+	# [question, answers] = spider_question(url)
