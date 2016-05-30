@@ -17,7 +17,7 @@ for page in xrange(1,maxpage):
 
 
 for (t,l) in zip(titles,links):
-	r.set(t,l)
+	r.sadd(t,l)
 
 for key in r.scan_iter():
     [question, answers] = spider_question(r.get(key))
