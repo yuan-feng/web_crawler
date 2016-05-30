@@ -1,5 +1,6 @@
 all:
+	-rm *.pyc
 	python main.py
 clean:
-	rm *.pyc
+	-rm *.pyc
 	python cleanRDB.py
