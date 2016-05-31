@@ -16,6 +16,9 @@ for page in xrange(1,maxpage):
 	[titles, links] = spider_index(url)
 
 
+for key in r.scan_iter():
+    r.delete(key)
+
 for (t,l) in zip(titles,links):
 	r.set(t,l)
 

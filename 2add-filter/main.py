@@ -10,17 +10,24 @@ r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 
 maxpage=29981   # real
-maxpage=3     # test purpose
+maxpage=2     # test purpose
 for page in xrange(1,maxpage):
 	url="http://stackoverflow.com/questions/tagged/c%2b%2b?page="+str(page)+"&sort=newest&pagesize=15"
 	[titles, links] = spider_index(url)
 
 
+link_filter='myset'
 for (t,l) in zip(titles,links):
-	r.sadd(t,l)
+	if r.sadd(link_filter,l) :	
+		r.set(t,l)
+		print 'Found a new question link!'
+	else:
+		print 'Filter out a duplicate link!'
 
-for key in r.scan_iter():
-    [question, answers] = spider_question(r.get(key))
+
+
+for link in r.smembers(link_filter):
+    [question, answers] = spider_question(link)
     print "\n"
     print question
     print answers
@@ -28,6 +35,9 @@ for key in r.scan_iter():
 
 
 
+
+# for key in r.scan_iter():
+# 	print key
 
 
 
