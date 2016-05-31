@@ -3,7 +3,7 @@ sudo apt-get update
 sudo apt-get install sublime-text
 sudo apt-get install python-numpy
 
-sudo apt-get git
+sudo apt-get install git
 git config --global user.email "appoliverapp@gmail.com"
 git config --global user.name "flyvbee"
 

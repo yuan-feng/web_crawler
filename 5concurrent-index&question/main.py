@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
 	# This is necessary:
 	# If network is slow, you may need to increase the sleep time.
-	# Will find another better way.
+	# Will find another better way to inform the question_spider to start.
 	initial_question_page_wait_time = 8
 	time.sleep(initial_question_page_wait_time)
 
